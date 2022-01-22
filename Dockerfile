@@ -74,7 +74,7 @@ RUN cd /tmp && \
 	git clone https://github.com/openresty/set-misc-nginx-module.git && \
 	git clone https://github.com/openresty/headers-more-nginx-module.git && \
 	git clone git://github.com/yaoweibin/ngx_http_substitutions_filter_module.git && \
-	git clone https://github.com/google/ngx_brotli
+	git clone --recursive https://github.com/google/ngx_brotli
 
 RUN ls -la /tmp/
 
