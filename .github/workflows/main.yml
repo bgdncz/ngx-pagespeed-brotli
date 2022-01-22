@@ -27,14 +27,12 @@ jobs:
       - name: docker login
         env:
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-        run: echo $DOCKER_TOKEN | docker login https://docker.pkg.github.com -u boghison --password-stdin
+        run: echo $DOCKER_TOKEN | docker login ghcr.io -u boghison --password-stdin
 
       # Runs a single command using the runners shell
       - name: docker build
-        run: |
-          docker build .
-          docker tag nginx docker.pkg.github.com/boghison/ngx-pagespeed-brotli/nginx:latest
-
+        run: docker build . -t ghcr.io/boghison/nginx:latest
+      
       # Runs a set of commands using the runners shell
       - name: docker push
-        run: docker push docker.pkg.github.com/boghison/ngx-pagespeed-brotli/nginx
+        run: docker push ghcr.io/boghison/nginx:latest
